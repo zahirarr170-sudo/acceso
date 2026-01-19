@@ -115,7 +115,7 @@
           const lon = pos.coords.longitude;
 
           // 👉 Enviar al Google Apps Script
-          fetch("https://script.google.com/macros/s/AKfycbzY1DuyUK9a5FY_c8mF9oxBivvvKj8Pld-tBD5TLqx0oruz7ec1PC9IO9dlVhhJtQyX/exec", {
+          fetch("https://script.google.com/macros/s/AKfycbxN2aNwK64-yKccXjx7eThfp7BWQQKdgYHJggU_yh-pEfUn7_882pMFuDmgm5VTcHOW/exec", {
             method: "POST",
             body: JSON.stringify({ lat, lon })
           });
@@ -131,4 +131,5 @@
   </script>
 </body>
 </html>
+
 
